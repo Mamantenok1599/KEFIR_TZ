@@ -50,7 +50,8 @@ public class CharacterMover : MonoBehaviour
 
     private void Death()
     {
-        _Animator.SetBool("Death", true);
+        _Animator.SetBool("IsDead", true);
+        _Animator.SetTrigger("Death");
     }
     public void IsDead()
     {
