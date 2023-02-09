@@ -17,9 +17,9 @@ public class CharacterMover : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        Move();
+        _Animator.SetFloat("Speed",Input.GetAxis("Vertical"));
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -32,34 +32,27 @@ public class CharacterMover : MonoBehaviour
         }
     }
 
-    private void Move()
-    {
-        if (Input.GetKey(KeyCode.W))
-        {
-            _Animator.SetFloat("Speed", 1.0f);
-        }
-        else
-        {
-            _Animator.SetFloat("Speed", 0.0f);
-        }
-    }
 
     private void Attack()
     {
 
-            int randomIndex = Random.Range(0, 1);
+            int randomIndex = Random.Range(1, 3);
             switch(randomIndex)
             {
-                case 0:
+                case 1:
                 _Animator.SetTrigger("Attack_01");
                     break;
-                case 1:
+                case 2:
                 _Animator.SetTrigger("Attack_02");
                     break;
             }
     }
 
     private void Death()
+    {
+        _Animator.SetBool("Death", true);
+    }
+    public void IsDead()
     {
             _Animator.enabled = false;
 
